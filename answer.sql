@@ -45,3 +45,14 @@ CREATE TABLE book_author (
     FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE CASCADE,
     FOREIGN KEY (author_id) REFERENCES author(author_id) ON DELETE CASCADE
 );
+
+-- Stores customer information, including contact details and authentication data.
+CREATE TABLE customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    password_hash VARCHAR(255) NOT NULL,
+    registration_date DATE NOT NULL
+);
