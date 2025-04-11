@@ -29,3 +29,10 @@ CREATE TABLE book (
     FOREIGN KEY (publisher_id) REFERENCES publisher(publisher_id) ON DELETE SET NULL,
     FOREIGN KEY (language_id) REFERENCES book_language(language_id) ON DELETE SET NULL
 );
+
+-- These table will store information about authors, including their first and last names.
+CREATE TABLE author (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
+);
