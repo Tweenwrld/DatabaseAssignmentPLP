@@ -94,3 +94,10 @@ CREATE TABLE customer_address (
     FOREIGN KEY (address_id) REFERENCES address(address_id) ON DELETE CASCADE,
     FOREIGN KEY (address_status_id) REFERENCES address_status(address_status_id) ON DELETE SET NULL
 );
+
+-- Stores available shipping methods and their base costs.
+CREATE TABLE shipping_method (
+    method_id INT AUTO_INCREMENT PRIMARY KEY,
+    method_name VARCHAR(100) NOT NULL,
+    cost DECIMAL(10, 2) NOT NULL
+);
