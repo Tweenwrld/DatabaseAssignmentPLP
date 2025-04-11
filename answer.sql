@@ -114,3 +114,14 @@ CREATE TABLE cust_order (
     FOREIGN KEY (shipping_method_id) REFERENCES shipping_method(method_id) ON DELETE SET NULL,
     FOREIGN KEY (shipping_address_id) REFERENCES address(address_id) ON DELETE SET NULL
 );
+
+-- Stores details of each book in an order, including quantity and price at the time of purchase.
+CREATE TABLE order_line (
+    line_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    book_id INT,
+    price DECIMAL(10, 2) NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES cust_order(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE SET NULL
+);
