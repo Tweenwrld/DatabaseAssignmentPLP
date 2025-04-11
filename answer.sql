@@ -63,3 +63,15 @@ CREATE TABLE country (
     country_name VARCHAR(100) NOT NULL,
     country_code CHAR(2) NOT NULL UNIQUE
 );
+
+
+-- Stores address information for customers, including street details and country reference.
+CREATE TABLE address (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    street_number VARCHAR(10),
+    street_name VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20),
+    country_id INT,
+    FOREIGN KEY (country_id) REFERENCES country(country_id) ON DELETE SET NULL
+);
