@@ -125,3 +125,9 @@ CREATE TABLE order_line (
     FOREIGN KEY (order_id) REFERENCES cust_order(order_id) ON DELETE CASCADE,
     FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE SET NULL
 );
+
+-- These table will store all possible statuses for orders where the status value can be Pending, Shipped, Delivered, Cancelled.
+CREATE TABLE order_status (
+    status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_value VARCHAR(50) NOT NULL
+);
