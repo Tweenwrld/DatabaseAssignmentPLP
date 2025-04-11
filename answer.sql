@@ -131,3 +131,14 @@ CREATE TABLE order_status (
     status_id INT AUTO_INCREMENT PRIMARY KEY,
     status_value VARCHAR(50) NOT NULL
 );
+
+-- Tracks the history of status changes for each order, with timestamps and notes.
+CREATE TABLE order_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    status_id INT,
+    status_date DATETIME NOT NULL,
+    notes TEXT,
+    FOREIGN KEY (order_id) REFERENCES cust_order(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (status_id) REFERENCES order_status(status_id) ON DELETE SET NULL
+);
