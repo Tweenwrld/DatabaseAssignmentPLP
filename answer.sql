@@ -9,3 +9,9 @@ CREATE TABLE publisher (
     contact_phone VARCHAR(20)
 );
 
+-- These table will store languages in which books are available, with language name and code.
+CREATE TABLE book_language (
+    language_id INT AUTO_INCREMENT PRIMARY KEY,
+    language_name VARCHAR(50) NOT NULL,
+    language_code CHAR(2) NOT NULL UNIQUE
+);
