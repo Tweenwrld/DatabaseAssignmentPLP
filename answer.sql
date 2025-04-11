@@ -36,3 +36,12 @@ CREATE TABLE author (
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL
 );
+
+-- These table works in hand with the author table
+CREATE TABLE book_author (
+    book_id INT,
+    author_id INT,
+    PRIMARY KEY (book_id, author_id),
+    FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (author_id) REFERENCES author(author_id) ON DELETE CASCADE
+);
