@@ -142,3 +142,5 @@ CREATE TABLE order_history (
     FOREIGN KEY (order_id) REFERENCES cust_order(order_id) ON DELETE CASCADE,
     FOREIGN KEY (status_id) REFERENCES order_status(status_id) ON DELETE SET NULL
 );
+
+ALTER TABLE customer DROP COLUMN password_hash;
