@@ -15,3 +15,17 @@ CREATE TABLE book_language (
     language_name VARCHAR(50) NOT NULL,
     language_code CHAR(2) NOT NULL UNIQUE
 );
+
+--  Stores information about books available in the bookstore, including title, pages, publication details, price, and stock.
+CREATE TABLE book (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    num_pages INT,
+    publication_date DATE,
+    publisher_id INT,
+    language_id INT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_quantity INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (publisher_id) REFERENCES publisher(publisher_id) ON DELETE SET NULL,
+    FOREIGN KEY (language_id) REFERENCES book_language(language_id) ON DELETE SET NULL
+);
