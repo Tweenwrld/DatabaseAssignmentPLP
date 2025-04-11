@@ -101,3 +101,16 @@ CREATE TABLE shipping_method (
     method_name VARCHAR(100) NOT NULL,
     cost DECIMAL(10, 2) NOT NULL
 );
+
+-- Stores customer order information, including order date, customer, shipping details, and total.
+CREATE TABLE cust_order (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATETIME NOT NULL,
+    shipping_method_id INT,
+    shipping_address_id INT,
+    order_total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE SET NULL,
+    FOREIGN KEY (shipping_method_id) REFERENCES shipping_method(method_id) ON DELETE SET NULL,
+    FOREIGN KEY (shipping_address_id) REFERENCES address(address_id) ON DELETE SET NULL
+);
