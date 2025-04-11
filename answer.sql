@@ -56,3 +56,10 @@ CREATE TABLE customer (
     password_hash VARCHAR(255) NOT NULL,
     registration_date DATE NOT NULL
 );
+
+-- Stores country information, including name and country code.
+CREATE TABLE country (
+    country_id INT AUTO_INCREMENT PRIMARY KEY,
+    country_name VARCHAR(100) NOT NULL,
+    country_code CHAR(2) NOT NULL UNIQUE
+);
