@@ -75,3 +75,22 @@ CREATE TABLE address (
     country_id INT,
     FOREIGN KEY (country_id) REFERENCES country(country_id) ON DELETE SET NULL
 );
+
+-- Stores possible statuses for customer addresses ie Current, Previous.
+CREATE TABLE address_status (
+    address_status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
+-- These table maanges relationship between customers and addresses, with status and date tracking.
+CREATE TABLE customer_address (
+    customer_id INT,
+    address_id INT,
+    address_status_id INT,
+    date_from DATE NOT NULL,
+    date_to DATE,
+    PRIMARY KEY (customer_id, address_id),
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY (address_id) REFERENCES address(address_id) ON DELETE CASCADE,
+    FOREIGN KEY (address_status_id) REFERENCES address_status(address_status_id) ON DELETE SET NULL
+);
